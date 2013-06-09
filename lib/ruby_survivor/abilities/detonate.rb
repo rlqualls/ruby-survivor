@@ -18,7 +18,7 @@ module RubySurvivor
       
       def bomb(direction, x, y, damage_amount)
         if @unit.position
-          receiver = space(direction, x, y).unit
+          receiver = space(direction, x, y).thing
           if receiver
             if receiver.abilities[:explode!]
               receiver.say "caught in bomb's flames which detonates ticking explosive"

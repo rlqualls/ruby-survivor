@@ -2,7 +2,7 @@ module RubySurvivor
   module Abilities
     class Shoot < Base
       def description
-        "Shoot your bow & arrow in given direction (forward by default)."
+        "Shoot your gun in given direction (forward by default)."
       end
       
       def perform(direction = :forward)
@@ -17,7 +17,7 @@ module RubySurvivor
       end
       
       def multi_unit(direction, range)
-        range.map { |n| unit(direction, n) }
+        range.map { |n| target(direction, n) }
       end
     end
   end

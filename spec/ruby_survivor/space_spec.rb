@@ -23,7 +23,10 @@ describe RubySurvivor::Space do
     it "should be empty" do
       @space.should be_empty
     end
-    
+
+    it "should not be item" do
+      @space.should_not be_item
+    end 
     it "should not be wall" do
       @space.should_not be_wall
     end
@@ -86,8 +89,8 @@ describe RubySurvivor::Space do
       @space.should_not be_empty
     end
     
-    it "should know what unit is on that space" do
-      @space.unit.should be_kind_of(RubySurvivor::Units::Survivor)
+    it "should know what thing is on that space" do
+      @space.thing.should be_kind_of(RubySurvivor::Units::Survivor)
     end
   end
   
@@ -109,13 +112,13 @@ describe RubySurvivor::Space do
       @space.should_not be_empty
     end
     
-    it "should have name of unit" do
+    it "should have name of thing" do
       @space.to_s.should == "Zombie"
     end
     
     describe "bound" do
       before(:each) do
-        @space.unit.bind
+        @space.thing.bind
       end
       
       it "should be captive" do

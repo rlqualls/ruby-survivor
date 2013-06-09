@@ -18,8 +18,8 @@ module RubySurvivor
         @unit.position.relative_space(*offset(direction, forward, right))
       end
       
-      def unit(direction, forward = 1, right = 0)
-        space(direction, forward, right).unit
+      def target(direction, forward = 1, right = 0)
+        space(direction, forward, right).thing
       end
       
       def damage(receiver, amount)

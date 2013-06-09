@@ -21,9 +21,9 @@ describe RubySurvivor::Abilities::Base do
     @ability.offset(:left, 2, 1).should == [-1, -2]
   end
   
-  it "should fetch unit at given direction with distance" do
-    @ability.expects(:space).with(:right, 3, 1).returns(stub(:unit => 'unit'))
-    @ability.unit(:right, 3, 1).should == 'unit'
+  it "should fetch thing at given direction with distance" do
+    @ability.expects(:space).with(:right, 3, 1).returns(stub(:thing => 'thing'))
+    @ability.target(:right, 3, 1).should == 'thing'
   end
   
   it "should have no description" do

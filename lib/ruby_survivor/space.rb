@@ -9,7 +9,7 @@ module RubySurvivor
     end
     
     def survivor?
-      unit.kind_of? Units::Survivor
+      thing.kind_of? Units::Survivor
     end
      
     def player?
@@ -17,15 +17,27 @@ module RubySurvivor
     end
     
     def enemy?
-      unit && !player? && !captive?
+      thing && !player? && !captive?
     end
     
     def captive?
-      unit && unit.bound?
+      thing && thing.bound?
+    end
+
+    def item?
+      medpack? || shotgun?
+    end
+
+    def medpack?
+      thing.kind_of? Items::Medpack
+    end
+
+    def shotgun?
+      thing.kind_of? Items::Shotgun
     end
     
     def empty?
-      unit.nil? && !wall?
+      thing.nil? && !wall?
     end
     
     def stairs?
@@ -33,10 +45,10 @@ module RubySurvivor
     end
     
     def ticking?
-      unit && unit.abilities.include?(:explode!)
+      thing && thing.abilities.include?(:explode!)
     end
     
-    def unit
+    def thing
       @floor.get(@x, @y)
     end
     
@@ -45,8 +57,8 @@ module RubySurvivor
     end
     
     def character
-      if unit
-        unit.character
+      if thing
+        thing.character
       elsif stairs?
         ">"
       else
@@ -55,8 +67,8 @@ module RubySurvivor
     end
     
     def to_s
-      if unit
-        unit.to_s
+      if thing
+        thing.to_s
       elsif wall?
         'wall'
       else
