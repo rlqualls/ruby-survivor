@@ -1,0 +1,8 @@
+= Ruby Survivor
+
+This is a game based on ruby-warrior that is designed to teach the Ruby 
+language and artificial intelligence in a fun, interactive way.
+
+It intends to be more than a mere reflavoring.  The solutions for each
+level will hopefully be more open-ended, with inventory-management,
+deeper AI, etc. 

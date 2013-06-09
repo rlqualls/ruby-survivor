@@ -1,0 +1,17 @@
+module RubySurvivor
+  module Abilities
+    class Pivot < Base
+      ROTATION_DIRECTIONS = [:forward, :right, :backward, :left]
+      
+      def description
+        "Rotate :left, :right or :backward (default)"
+      end
+      
+      def perform(direction = :backward)
+        verify_direction(direction)
+        @unit.position.rotate(ROTATION_DIRECTIONS.index(direction))
+        @unit.say "pivots #{direction}"
+      end
+    end
+  end
+end
