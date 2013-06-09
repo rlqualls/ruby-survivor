@@ -9,10 +9,10 @@ clue "When there is no enemy ahead of you call survivor.rest! until health is fu
 time_bonus 35
 ace_score 71
 size 9, 1
-stairs 8, 0
+exit 8, 0
 
 survivor 0, 0, :east do |u|
-  u.add_abilities :health, :rest!
+  u.add_abilities :health, :rest!, :heal!
 end
 
 unit :zombie, 2, 0, :west

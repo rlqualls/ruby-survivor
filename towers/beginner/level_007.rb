@@ -3,16 +3,16 @@
 #  ------
 
 description "You feel a wall right in front of you and an opening behind you."
-tip "You are not as effective at attacking backward. Use warrior.feel.wall? and warrior.pivot! to turn around."
+tip "You are not as effective at attacking backward. Use survivor.feel.wall? and survivor.pivot! to turn around."
 
 time_bonus 30
 ace_score 50
 size 6, 1
-stairs 0, 0
+exit 0, 0
 
-warrior 5, 0, :east do |u|
+survivor 5, 0, :east do |u|
   u.add_abilities :pivot!
 end
 
-unit :archer, 1, 0, :east
-unit :thick_sludge, 3, 0, :east
+unit :spitter, 1, 0, :east
+unit :thick_zombie, 3, 0, :east

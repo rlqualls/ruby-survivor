@@ -9,12 +9,12 @@ clue "Don't just keep shooting the bow while you are being attacked from behind.
 time_bonus 40
 ace_score 100
 size 11, 1
-stairs 0, 0
+exit 0, 0
 
-warrior 5, 0, :east
+survivor 5, 0, :east
 
 unit :captive, 1, 0, :east
-unit :archer, 2, 0, :east
-unit :thick_sludge, 7, 0, :west
-unit :wizard, 9, 0, :west
+unit :spitter, 2, 0, :east
+unit :thick_zombie, 7, 0, :west
+unit :witch, 9, 0, :west
 unit :captive, 10, 0, :west

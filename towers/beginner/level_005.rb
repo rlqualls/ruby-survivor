@@ -3,20 +3,20 @@
 #  -------
 
 description "You hear cries for help. Captives must need rescuing."
-tip "Use warrior.feel.captive? to see if there is a captive and warrior.rescue! to rescue him. Don't attack captives."
+tip "Use survivor.feel.captive? to see if there is a captive and survivor.rescue! to rescue him. Don't attack captives."
 clue "Don't forget to constantly check if you're taking damage. Rest until your health is full if you aren't taking damage."
 
 time_bonus 45
 ace_score 123
 size 7, 1
-stairs 6, 0
+exit 6, 0
 
-warrior 0, 0, :east do |u|
+survivor 0, 0, :east do |u|
   u.add_abilities :rescue!
 end
 
 unit :captive, 2, 0, :west
-unit :archer, 3, 0, :west
-unit :archer, 4, 0, :west
-unit :thick_sludge, 5, 0, :west
+unit :spitter, 3, 0, :west
+unit :spitter, 4, 0, :west
+unit :thick_zombie, 5, 0, :west
 unit :captive, 6, 0, :west
