@@ -63,19 +63,19 @@ describe RubySurvivor::Position do
     @floor.get(2, 3).should == @unit
   end
   
-  it "should return distance from stairs as 0 when on stairs" do
-    @floor.place_stairs(1, 2)
-    @position.distance_from_stairs.should == 0
+  it "should return distance from exit as 0 when on exit" do
+    @floor.place_exit(1, 2)
+    @position.distance_from_exit.should == 0
   end
   
-  it "should return distance from stairs in both directions" do
-    @floor.place_stairs(0, 3)
-    @position.distance_from_stairs.should == 2
+  it "should return distance from exit in both directions" do
+    @floor.place_exit(0, 3)
+    @position.distance_from_exit.should == 2
   end
   
-  it "should return relative direction of stairs" do
-    @floor.place_stairs(0, 0)
-    @position.relative_direction_of_stairs.should == :forward
+  it "should return relative direction of exit" do
+    @floor.place_exit(0, 0)
+    @position.relative_direction_of_exit.should == :forward
   end
   
   it "should return relative direction of given space" do

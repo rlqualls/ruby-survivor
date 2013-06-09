@@ -31,8 +31,8 @@ describe RubySurvivor::Space do
       @space.should_not be_wall
     end
     
-    it "should not be stairs" do
-      @space.should_not be_stairs
+    it "should not be exit" do
+      @space.should_not be_exit
     end
     
     it "should not be captive" do
@@ -156,9 +156,9 @@ describe RubySurvivor::Space do
     end
   end
   
-  describe "at stairs" do
+  describe "at exit" do
     before(:each) do
-      @floor.place_stairs(0, 0)
+      @floor.place_exit(0, 0)
       @space = @floor.space(0, 0)
     end
     
@@ -166,8 +166,8 @@ describe RubySurvivor::Space do
       @space.should be_empty
     end
     
-    it "should be stairs" do
-      @space.should be_stairs
+    it "should be exit" do
+      @space.should be_exit
     end
   end
 end

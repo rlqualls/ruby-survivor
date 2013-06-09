@@ -48,9 +48,9 @@ describe RubySurvivor::Floor do
       @floor.space(0, 0).should be_kind_of(RubySurvivor::Space)
     end
   
-    it "should place stairs and be able to fetch the location" do
-      @floor.place_stairs(1, 2)
-      @floor.stairs_location.should == [1, 2]
+    it "should place exit and be able to fetch the location" do
+      @floor.place_exit(1, 2)
+      @floor.exit_location.should == [1, 2]
     end
   end
   
@@ -61,9 +61,9 @@ describe RubySurvivor::Floor do
       @floor.height = 1
     end
   
-    it "should print map with stairs and unit" do
+    it "should print map with exit and unit" do
       @floor.add(RubySurvivor::Units::Survivor.new, 0, 0)
-      @floor.place_stairs(2, 0)
+      @floor.place_exit(2, 0)
       @floor.character.should == <<-MAP
  ---
 |@ >|

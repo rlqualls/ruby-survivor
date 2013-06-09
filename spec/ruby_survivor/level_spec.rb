@@ -10,10 +10,10 @@ describe RubySurvivor::Level do
     @level.stubs(:failed?).returns(false)
   end
   
-  it "should consider passed when survivor is on stairs" do
+  it "should consider passed when survivor is at the exit" do
     @level.survivor = RubySurvivor::Units::Survivor.new
     @floor.add(@level.survivor, 0, 0, :north)
-    @floor.place_stairs(0, 0)
+    @floor.place_exit(0, 0)
     @level.should be_passed
   end
   

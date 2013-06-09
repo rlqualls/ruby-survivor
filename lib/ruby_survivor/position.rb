@@ -37,8 +37,8 @@ module RubySurvivor
       @x, @y = *translate_offset(forward, right)
     end
     
-    def distance_from_stairs
-      distance_of(@floor.stairs_space)
+    def distance_from_exit
+      distance_of(@floor.exit_space)
     end
     
     def distance_of(space)
@@ -46,8 +46,8 @@ module RubySurvivor
       (@x - x).abs + (@y - y).abs
     end
     
-    def relative_direction_of_stairs
-      relative_direction_of(@floor.stairs_space)
+    def relative_direction_of_exit
+      relative_direction_of(@floor.exit_space)
     end
     
     def relative_direction_of(space)

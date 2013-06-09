@@ -40,8 +40,8 @@ module RubySurvivor
       thing.nil? && !wall?
     end
     
-    def stairs?
-      @floor.stairs_location == location
+    def exit?
+      @floor.exit_location == location
     end
     
     def ticking?
@@ -59,7 +59,7 @@ module RubySurvivor
     def character
       if thing
         thing.character
-      elsif stairs?
+      elsif exit?
         ">"
       else
         " "

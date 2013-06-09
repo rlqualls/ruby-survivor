@@ -103,7 +103,7 @@ module RubySurvivor
     end
     
     def passed?
-      @floor.stairs_space.survivor?
+      @floor.exit_space.survivor?
     end
     
     def failed?

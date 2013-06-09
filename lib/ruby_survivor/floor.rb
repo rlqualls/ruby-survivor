@@ -1,13 +1,13 @@
 module RubySurvivor
   class Floor
     attr_accessor :width, :height, :grid
-    attr_reader :stairs_location
+    attr_reader :exit_location
     
     def initialize
       @width = 0
       @height = 0
       @units = []
-      @stairs_location = [-1, -1]
+      @exit_location = [-1, -1]
     end
     
     def add(unit, x, y, direction = nil)
@@ -15,12 +15,12 @@ module RubySurvivor
       unit.position = Position.new(self, x, y, direction)
     end
     
-    def place_stairs(x, y)
-      @stairs_location = [x, y]
+    def place_exit(x, y)
+      @exit_location = [x, y]
     end
     
-    def stairs_space
-      space(*@stairs_location)
+    def exit_space
+      space(*@exit_location)
     end
     
     def units
