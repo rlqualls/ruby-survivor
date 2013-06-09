@@ -6,6 +6,7 @@ module RubySurvivor
       
       def initialize
         @score = 0 # TODO make score dynamic
+        @inventory = []
       end
       
       def play_turn(turn)
@@ -39,6 +40,18 @@ module RubySurvivor
         else
           "Survivor"
         end
+      end
+
+      def has?(item)
+        @inventory.include?(item)
+      end
+
+      def give(item)
+        @inventory << item
+      end
+
+      def take(item)
+        @inventory.delete_at(@inventory.index(item) || @inventory.length)
       end
       
       def to_s

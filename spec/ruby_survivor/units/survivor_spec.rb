@@ -57,4 +57,23 @@ describe RubySurvivor::Units::Survivor do
   it "should appear as @ on map" do
     @survivor.character.should == "@"
   end  
+
+  it "should receive items" do
+    @survivor.give(:shotgun)
+    @survivor.has?(:shotgun).should be_true
+  end
+
+  it "should be able to remove items" do
+    @survivor.give(:shotgun)
+    @survivor.take(:shotgun)
+    @survivor.has?(:shotgun).should_not be_true
+  end
+
+  it "should only remove one item at a time" do
+    @survivor.give(:shotgun)
+    @survivor.give(:medpack)
+    @survivor.give(:shotgun)
+    @survivor.take(:shotgun)
+    @survivor.has?(:shotgun).should be_true 
+  end
 end
