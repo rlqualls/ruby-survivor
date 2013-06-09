@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.dirname(__FILE__) + '/../lib/ruby_warrior'
+require File.dirname(__FILE__) + '/../lib/ruby_survivor'
 
-runner = RubyWarrior::Runner.new(ARGV, STDIN, STDOUT)
+runner = RubySurvivor::Runner.new(ARGV, STDIN, STDOUT)
 runner.run
