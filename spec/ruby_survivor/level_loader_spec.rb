@@ -23,9 +23,15 @@ describe RubySurvivor::LevelLoader do
       @level.floor.height.should == 3
     end
     
-    it "should be able to add stairs" do
-      @level.floor.expects(:place_stairs).with(1, 2)
-      @loader.stairs 1, 2
+    it "should be able to add exit" do
+      @level.floor.expects(:place_exit).with(1, 2)
+      @loader.exit 1, 2
+    end
+
+    it "should not exit the program/class upon calling exit" do
+      @loader.exit 1, 2
+      @loader.size 5, 3
+      @level.floor.width.should == 5
     end
     
     it "should yield new unit when building" do
@@ -39,7 +45,7 @@ describe RubySurvivor::LevelLoader do
       lambda { @loader.unit :thick_zombie, 1, 2 }.should_not raise_error
     end
     
-    it "should build warrior from profile" do
+    it "should build survivor from profile" do
       @loader.survivor 1, 2 do |unit|
         unit.should be_kind_of(RubySurvivor::Units::Survivor)
         unit.position.should be_at(1, 2)

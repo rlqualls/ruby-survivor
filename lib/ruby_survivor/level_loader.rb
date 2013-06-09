@@ -31,8 +31,8 @@ module RubySurvivor
       @floor.height = height
     end
     
-    def stairs(x, y)
-      @floor.place_stairs(x, y)
+    def exit(x, y)
+      @floor.place_exit(x, y)
     end
     
     def unit(unit, x, y, facing = :north)
