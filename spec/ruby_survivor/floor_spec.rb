@@ -8,26 +8,26 @@ describe RubySurvivor::Floor do
       @floor.height = 3
     end
   
-    it "should be able to add a unit and fetch it at that position" do
-      unit = RubySurvivor::Units::Base.new
-      @floor.add(unit, 0, 1, :north)
-      @floor.get(0, 1).should == unit
+    it "should be able to add a entity and fetch it at that position" do
+      entity = RubySurvivor::Units::Base.new
+      @floor.add(entity, 0, 1, :north)
+      @floor.get(0, 1).should == entity
     end
   
-    it "should not consider unit on floor if no position" do
-      unit = RubySurvivor::Units::Base.new
-      @floor.add(unit, 0, 1, :north)
-      unit.position = nil
-      @floor.units.should_not include(unit)
+    it "should not consider entity on floor if no position" do
+      entity = RubySurvivor::Units::Base.new
+      @floor.add(entity, 0, 1, :north)
+      entity.position = nil
+      @floor.entities.should_not include(entity)
     end
   
-    it "should fetch other units not survivor" do
-      unit = RubySurvivor::Units::Base.new
+    it "should fetch other entities not survivor" do
+      entity = RubySurvivor::Units::Base.new
       survivor = RubySurvivor::Units::Survivor.new
-      @floor.add(unit, 0, 0, :north)
+      @floor.add(entity, 0, 0, :north)
       @floor.add(survivor, 1, 0, :north)
-      @floor.other_units.should_not include(survivor)
-      @floor.other_units.should include(unit)
+      @floor.other_entities.should_not include(survivor)
+      @floor.other_entities.should include(entity)
     end
   
     it "should not consider corners out of bounds" do
@@ -61,7 +61,7 @@ describe RubySurvivor::Floor do
       @floor.height = 1
     end
   
-    it "should print map with exit and unit" do
+    it "should print map with exit and entity" do
       @floor.add(RubySurvivor::Units::Survivor.new, 0, 0)
       @floor.place_exit(2, 0)
       @floor.character.should == <<-MAP
@@ -71,11 +71,11 @@ describe RubySurvivor::Floor do
 MAP
     end
     
-    it "should return unique units" do
+    it "should return unique entities" do
       u1 = RubySurvivor::Units::Base.new
       @floor.add(u1, 0, 0)
       @floor.add(RubySurvivor::Units::Base.new, 1, 0)
-      @floor.unique_units.should == [u1]
+      @floor.unique_entities.should == [u1]
     end
   end
 end

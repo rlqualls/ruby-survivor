@@ -41,6 +41,13 @@ module RubySurvivor
       yield unit if block_given?
       unit
     end
+
+    def item(item, x, y)
+      item = item_to_constant(item).new unless item.kind_of? Items::Base
+      @floor.add(item, x, y, nil)
+      yield item if block_given?
+      item
+    end
     
     def survivor(*args, &block)
       @level.setup_survivor unit(Units::Survivor.new, *args, &block)
@@ -51,6 +58,11 @@ module RubySurvivor
     def unit_to_constant(name)
       camel = name.to_s.split('_').map { |s| s.capitalize }.join
       eval("Units::#{camel}")
+    end
+
+    def item_to_constant(name)
+      camel = name.to_s.split('_').map { |s| s.capitalize }.join
+      eval("Items::#{camel}")
     end
   end
 end

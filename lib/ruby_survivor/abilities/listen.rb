@@ -6,8 +6,8 @@ module RubySurvivor
       end
       
       def perform
-        @unit.position.floor.units.map do |unit|
-          unit.position.space unless unit == @unit
+        @unit.position.floor.entities.map do |entity|
+          entity.position.space unless entity == @unit
         end.compact
       end
     end

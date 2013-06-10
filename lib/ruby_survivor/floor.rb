@@ -6,13 +6,13 @@ module RubySurvivor
     def initialize
       @width = 0
       @height = 0
-      @units = []
+      @entities = []
       @exit_location = [-1, -1]
     end
     
-    def add(unit, x, y, direction = nil)
-      @units << unit
-      unit.position = Position.new(self, x, y, direction)
+    def add(entity, x, y, direction = nil)
+      @entities << entity
+      entity.position = Position.new(self, x, y, direction)
     end
     
     def place_exit(x, y)
@@ -23,16 +23,16 @@ module RubySurvivor
       space(*@exit_location)
     end
     
-    def units
-      @units.reject { |u| u.position.nil? }
+    def entities
+      @entities.reject { |u| u.position.nil? }
     end
     
-    def other_units
-      units.reject { |u| u.kind_of? Units::Survivor }
+    def other_entities
+      entities.reject { |u| u.kind_of? Units::Survivor }
     end
     
     def get(x, y)
-      units.detect do |unit|
+      entities.detect do |unit|
         unit.position.at?(x, y)
       end
     end
@@ -60,12 +60,12 @@ module RubySurvivor
       rows.join("\n") + "\n"
     end
     
-    def unique_units
-      unique_units = []
-      units.each do |unit|
-        unique_units << unit unless unique_units.map { |u| u.class }.include?(unit.class)
+    def unique_entities
+      unique_entities = []
+      entities.each do |entity|
+        unique_entities << entity unless unique_entities.map { |u| u.class }.include?(entity.class)
       end
-      unique_units
+      unique_entities
     end
   end
 end

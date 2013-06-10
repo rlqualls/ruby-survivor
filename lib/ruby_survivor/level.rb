@@ -51,8 +51,8 @@ module RubySurvivor
         return if passed? || failed?
         UI.puts "- turn #{n+1} -"
         UI.print @floor.character
-        @floor.units.each { |unit| unit.prepare_turn }
-        @floor.units.each { |unit| unit.perform_turn }
+        @floor.entities.each { |entity| entity.prepare_turn }
+        @floor.entities.each { |entity| entity.perform_turn }
         yield if block_given?
         @time_bonus -= 1 if @time_bonus > 0
       end

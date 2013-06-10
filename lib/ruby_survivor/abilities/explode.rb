@@ -10,8 +10,8 @@ module RubySurvivor
       def perform
         if @unit.position
           @unit.say "explodes, collapsing the ceiling and damanging every unit."
-          @unit.position.floor.units.map do |unit|
-            unit.take_damage(100)
+          @unit.position.floor.entities.map do |entity|
+            entity.take_damage(100)
           end
         end
       end

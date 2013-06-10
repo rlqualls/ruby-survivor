@@ -3,6 +3,7 @@ $: << File.dirname(__FILE__)
 require 'set'
 
 require 'ruby_survivor/core_additions'
+require 'ruby_survivor/entity'
 
 require 'ruby_survivor/runner'
 require 'ruby_survivor/game'
