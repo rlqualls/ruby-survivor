@@ -5,12 +5,8 @@ describe RubySurvivor::Units::Zombie do
     @zombie = RubySurvivor::Units::Zombie.new
   end
   
-  it "should have attack action" do
-    @zombie.abilities.keys.should include(:attack!)
-  end
-  
-  it "should have feel sense" do
-    @zombie.abilities.keys.should include(:feel)
+  it "should have zombie abilities" do
+    @zombie.abilities.keys.to_set.should == [:attack!, :feel, :walk!, :listen, :direction_of].to_set
   end
   
   it "should have attack power of 3" do
@@ -23,5 +19,9 @@ describe RubySurvivor::Units::Zombie do
   
   it "should appear as z on map" do
     @zombie.character.should == "z"
+  end
+
+  it "should walk toward any survivors" do
+    pending
   end
 end
