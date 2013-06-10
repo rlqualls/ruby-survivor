@@ -1,10 +1,10 @@
 #  -------
-# |@ CaaSC|
+# |@ CppS>|
 #  -------
 
 description "You hear cries for help. Captives must need rescuing."
+
 tip "Use survivor.feel.captive? to see if there is a captive and survivor.rescue! to rescue him. Don't attack captives."
-clue "Don't forget to constantly check if you're taking damage. Rest until your health is full if you aren't taking damage."
 
 time_bonus 45
 ace_score 123
@@ -19,4 +19,3 @@ unit :captive, 2, 0, :west
 unit :spitter, 3, 0, :west
 unit :spitter, 4, 0, :west
 unit :thick_zombie, 5, 0, :west
-unit :captive, 6, 0, :west

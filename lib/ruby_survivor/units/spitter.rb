@@ -19,15 +19,15 @@ module RubySurvivor
       end
       
       def shoot_power
-        3
+        5
       end
       
       def max_health
-        7
+        5
       end
       
       def character
-        "a"
+        "p"
       end
     end
   end

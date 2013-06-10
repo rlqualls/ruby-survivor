@@ -2,8 +2,9 @@
 # |@      >|
 #  --------
 
-description "You see before yourself a long hallway with stairs at the end. There is nothing in the way."
-tip "Call warrior.walk! to walk forward in the Player 'play_turn' method."
+description "You stand at the end of an empty alley.  It's 5AM, and at this point East Providence is just a couple of miles away.  Your daughter, Ruby, is hopefully still waiting for you there."
+
+tip "Call survivor.walk! to walk forward in the Player 'play_turn' method."
 
 
 time_bonus 15

@@ -1,18 +1,20 @@
 #  -------
-# |@ Sa S>|
+# |@    p>|
 #  -------
 
-description "You can hear bow strings being stretched."
-tip "No new abilities this time, but you must be careful not to rest while taking damage. Save a @health instance variable and compare it on each turn to see if you're taking damage."
-clue "Set @health to your current health at the end of the turn. If this is greater than your current health next turn then you know you're taking damage and shouldn't rest."
+description "You can hear a high-pitched hiss in the distance."
+
+tip "Spitters can deal a lot of damage.  Instead of using survivor.walk!, use survivor.run! to get to them before they can take you down."
+
+clue "Use survivor.run! to make it to enemies that can attack you from a distance"
 
 time_bonus 45
 ace_score 90
 size 7, 1
 exit 6, 0
 
-survivor 0, 0, :east
+survivor 0, 0, :east do |u|
+  u.add_abilities :run!
+end
 
-unit :thick_sludge, 2, 0, :west
-unit :archer, 3, 0, :west
-unit :thick_sludge, 5, 0, :west
+unit :spitter, 5, 0, :west
