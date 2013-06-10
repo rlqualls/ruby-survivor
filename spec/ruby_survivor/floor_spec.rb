@@ -9,20 +9,20 @@ describe RubySurvivor::Floor do
     end
   
     it "should be able to add a entity and fetch it at that position" do
-      entity = RubySurvivor::Units::Base.new
+      entity = RubySurvivor::Entity.new
       @floor.add(entity, 0, 1, :north)
       @floor.get(0, 1).should == entity
     end
   
     it "should not consider entity on floor if no position" do
-      entity = RubySurvivor::Units::Base.new
+      entity = RubySurvivor::Entity.new
       @floor.add(entity, 0, 1, :north)
       entity.position = nil
       @floor.entities.should_not include(entity)
     end
   
     it "should fetch other entities not survivor" do
-      entity = RubySurvivor::Units::Base.new
+      entity = RubySurvivor::Entity.new
       survivor = RubySurvivor::Units::Survivor.new
       @floor.add(entity, 0, 0, :north)
       @floor.add(survivor, 1, 0, :north)

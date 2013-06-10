@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe RubySurvivor::Position do
   before(:each) do
-    @unit = RubySurvivor::Units::Base.new
+    @entity = RubySurvivor::Entity.new
     @floor = RubySurvivor::Floor.new
     @floor.width = 6
     @floor.height = 5
-    @floor.add(@unit, 1, 2, :north)
-    @position = @unit.position
+    @floor.add(@entity, 1, 2, :north)
+    @position = @entity.position
   end
   
   it "should rotate clockwise" do
@@ -27,40 +27,40 @@ describe RubySurvivor::Position do
   end
   
   it "should get relative space in front" do
-    unit = RubySurvivor::Units::Base.new
-    @floor.add(unit, 1, 1)
+    entity = RubySurvivor::Entity.new
+    @floor.add(entity, 1, 1)
     @position.relative_space(1).should_not be_empty
   end
   
   it "should get relative object in front when rotated" do
-    unit = RubySurvivor::Units::Base.new
-    @floor.add(unit, 2, 2)
+    entity = RubySurvivor::Entity.new
+    @floor.add(entity, 2, 2)
     @position.rotate(1)
     @position.relative_space(1).should_not be_empty
   end
   
   it "should get relative object diagonally" do
-    unit = RubySurvivor::Units::Base.new
-    @floor.add(unit, 0, 1)
+    entity = RubySurvivor::Entity.new
+    @floor.add(entity, 0, 1)
     @position.relative_space(1, -1).should_not be_empty
   end
   
   it "should get relative object diagonally when rotating" do
-    unit = RubySurvivor::Units::Base.new
-    @floor.add(unit, 0, 1)
+    entity = RubySurvivor::Entity.new
+    @floor.add(entity, 0, 1)
     @position.rotate(2)
     @position.relative_space(-1, 1).should_not be_empty
   end
   
   it "should move object on floor relatively" do
-    @floor.get(1, 2).should == @unit
+    @floor.get(1, 2).should == @entity
     @position.move(-1, 2)
     @floor.get(1, 2).should be_nil
-    @floor.get(3, 3).should == @unit
+    @floor.get(3, 3).should == @entity
     @position.rotate(1)
     @position.move(-1)
     @floor.get(3, 3).should be_nil
-    @floor.get(2, 3).should == @unit
+    @floor.get(2, 3).should == @entity
   end
   
   it "should return distance from exit as 0 when on exit" do

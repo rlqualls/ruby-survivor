@@ -15,13 +15,12 @@ module RubySurvivor
     end
     
     def take_damage(amount)
-      unbind if bound?
       if health
         self.health -= amount
         say "takes #{amount} damage, #{health} health power left"
         if health <= 0
           @position = nil
-          say "dies"
+          say "is destroyed"
         end
       end
     end
@@ -31,7 +30,7 @@ module RubySurvivor
     end
     
     def alive?
-      !position.nil?
+      !@position.nil?
     end
       
     def say(msg)
@@ -63,7 +62,7 @@ module RubySurvivor
         abilities.values.each do |ability|
           ability.pass_turn
         end
-        if @current_turn.action && !bound?
+        if @current_turn.action 
           name, *args = @current_turn.action
           abilities[name].perform(*args)
         end
