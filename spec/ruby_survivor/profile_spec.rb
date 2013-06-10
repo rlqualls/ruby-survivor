@@ -122,10 +122,10 @@ describe RubySurvivor::Profile do
     @profile.should_not be_level_after_epic
   end
   
-  describe "with tower path" do
+  describe "with area path" do
     before(:each) do
       @profile.survivor_name = "John Smith"
-      @profile.tower_path = 'path/to/tower'
+      @profile.area_path = 'path/to/area'
     end
     
     it "save should write file with encoded profile" do
@@ -138,24 +138,24 @@ describe RubySurvivor::Profile do
     
     it "should have a nice string representation" do
       @profile.survivor_name = 'Joe'
-      @profile.to_s.should == "Joe - tower - level 0 - score 0"
+      @profile.to_s.should == "Joe - area - level 0 - score 0"
     end
     
     it "should include epic score in string representation" do
       @profile.survivor_name = 'Joe'
       @profile.enable_epic_mode
-      @profile.to_s.should == "Joe - tower - first score 0 - epic score 0"
+      @profile.to_s.should == "Joe - area - first score 0 - epic score 0"
     end
     
     it "should include epic score with grade in string representation" do
       @profile.survivor_name = 'Joe'
       @profile.enable_epic_mode
       @profile.average_grade = 0.7
-      @profile.to_s.should == "Joe - tower - first score 0 - epic score 0 (C)"
+      @profile.to_s.should == "Joe - area - first score 0 - epic score 0 (C)"
     end
     
     it "should guess at the player path" do
-      @profile.player_path.should == './rubysurvivor/john-smith-tower'
+      @profile.player_path.should == './rubysurvivor/john-smith-area'
     end
   
     it "should use specified player path" do
@@ -163,9 +163,9 @@ describe RubySurvivor::Profile do
       @profile.player_path.should == "path/to/player"
     end
   
-    it "should load tower from path" do
-      RubySurvivor::Tower.expects(:new).with('tower').returns('tower')
-      @profile.tower.should == 'tower'
+    it "should load area from path" do
+      RubySurvivor::Area.expects(:new).with('area').returns('area')
+      @profile.area.should == 'area'
     end
   end
 end

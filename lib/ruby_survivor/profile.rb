@@ -2,10 +2,10 @@ require 'base64'
 
 module RubySurvivor
   class Profile
-    attr_accessor :score, :epic_score, :current_epic_score, :average_grade, :current_epic_grades, :abilities, :level_number, :last_level_number, :tower_path, :survivor_name, :player_path
+    attr_accessor :score, :epic_score, :current_epic_score, :average_grade, :current_epic_grades, :abilities, :level_number, :last_level_number, :area_path, :survivor_name, :player_path
     
     def initialize
-      @tower_path = nil
+      @area_path = nil
       @survivor_name = nil
       @score = 0
       @current_epic_score = 0
@@ -42,14 +42,14 @@ module RubySurvivor
     end
     
     def directory_name
-      [survivor_name.downcase.gsub(/[^a-z0-9]+/, '-'), tower.name].join('-')
+      [survivor_name.downcase.gsub(/[^a-z0-9]+/, '-'), area.name].join('-')
     end
     
     def to_s
       if epic?
-        [survivor_name, tower.name, "first score #{score}", "epic score #{epic_score_with_grade}"].join(' - ')
+        [survivor_name, area.name, "first score #{score}", "epic score #{epic_score_with_grade}"].join(' - ')
       else
-        [survivor_name, tower.name, "level #{level_number}", "score #{score}"].join(' - ')
+        [survivor_name, area.name, "level #{level_number}", "score #{score}"].join(' - ')
       end
     end
     
@@ -61,8 +61,8 @@ module RubySurvivor
       end
     end
     
-    def tower
-      Tower.new(File.basename @tower_path)
+    def area
+      Area.new(File.basename @area_path)
     end
     
     def current_level

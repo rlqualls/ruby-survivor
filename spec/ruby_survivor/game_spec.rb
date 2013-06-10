@@ -46,19 +46,19 @@ describe RubySurvivor::Game do
     2.times { @game.profile.should == :profile1 }
   end
   
-  it "should ask user to choose a tower when creating a new profile" do
+  it "should ask user to choose an area when creating a new profile" do
     RubySurvivor::UI.stubs(:gets).returns('')
-    @game.stubs(:towers).returns([:tower1, :tower2])
-    RubySurvivor::UI.expects(:choose).with('tower', [:tower1, :tower2]).returns(stub(:path => '/foo/bar'))
+    @game.stubs(:areas).returns([:area1, :area2])
+    RubySurvivor::UI.expects(:choose).with('area', [:area1, :area2]).returns(stub(:path => '/foo/bar'))
     @game.new_profile
   end
   
-  it "should pass name and selected tower to profile" do
+  it "should pass name and selected area to profile" do
     profile = stub
-    RubySurvivor::UI.stubs(:choose).returns(stub(:path => 'tower_path'))
+    RubySurvivor::UI.stubs(:choose).returns(stub(:path => 'area_path'))
     RubySurvivor::UI.stubs(:request).returns('name')
     RubySurvivor::Profile.expects(:new).returns(profile)
-    profile.expects(:tower_path=).with('tower_path')
+    profile.expects(:area_path=).with('area_path')
     profile.expects(:survivor_name=).with('name')
     @game.new_profile.should == profile
   end
@@ -66,16 +66,16 @@ describe RubySurvivor::Game do
   
   # TOWERS
   
-  it "load towers for each tower path" do
-    RubySurvivor::Tower.expects(:new).with('towers/foo').returns(1)
-    RubySurvivor::Tower.expects(:new).with('towers/bar').returns(2)
-    @game.stubs(:tower_paths).returns(['towers/foo', 'towers/bar'])
-    @game.towers.should == [1, 2]
+  it "load areas for each area path" do
+    RubySurvivor::Area.expects(:new).with('areas/foo').returns(1)
+    RubySurvivor::Area.expects(:new).with('areas/bar').returns(2)
+    @game.stubs(:area_paths).returns(['areas/foo', 'areas/bar'])
+    @game.areas.should == [1, 2]
   end
   
-  it "should find tower paths using Dir[] search" do
-    Dir.expects(:[]).with(File.expand_path('../../../towers/*', __FILE__))
-    @game.tower_paths
+  it "should find area paths using Dir[] search" do
+    Dir.expects(:[]).with(File.expand_path('../../../areas/*', __FILE__))
+    @game.area_paths
   end
   
   
@@ -98,7 +98,7 @@ describe RubySurvivor::Game do
     profile.current_epic_grades = { 1 => 0.7, 2 => 0.9 }
     @game.stubs(:profile).returns(profile)
     report = @game.final_report
-    report.should include("Your average grade for this tower is: B")
+    report.should include("Your average grade for this area is: B")
     report.should include("Level 1: C\n  Level 2: A")
   end
   

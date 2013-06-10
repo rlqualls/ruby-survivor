@@ -25,8 +25,8 @@ module RubySurvivor
     
     def load_path
       File.join(
-        File.expand_path('../../../towers/', __FILE__),
-        File.basename(@profile.tower_path) + "/level_" +
+        File.expand_path('../../../areas/', __FILE__),
+        File.basename(@profile.area_path) + "/level_" +
           @number.to_s.rjust(3, '0') + ".rb"
       )
     end

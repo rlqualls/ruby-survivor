@@ -1,9 +1,9 @@
 module RubySurvivor
-  class Tower
+  class Area
     attr_reader :path
     
     def initialize(path)
-      @path = File.join(File.expand_path('../../../towers/', __FILE__), path)
+      @path = File.join(File.expand_path('../../../areas/', __FILE__), path)
     end
     
     def name

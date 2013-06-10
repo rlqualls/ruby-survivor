@@ -72,9 +72,9 @@ module RubySurvivor
       current_level.play
       if current_level.passed?
         if next_level.exists?
-          UI.puts "Success! You have found the stairs."
+          UI.puts "Success! You have found the exit."
         else
-          UI.puts "CONGRATULATIONS! You have climbed to the top of the tower and rescued the fair maiden Ruby."
+          UI.puts "CONGRATULATIONS! You have finished this area."
           continue = false
         end
         current_level.tally_points
@@ -143,20 +143,20 @@ module RubySurvivor
     
     def new_profile
       profile = Profile.new
-      profile.tower_path = UI.choose('tower', towers).path
+      profile.area_path = UI.choose('area', areas).path
       profile.survivor_name = UI.request('Enter a name for your survivor: ')
       profile
     end
     
     
-    # towers
+    # areas
     
-    def towers
-      tower_paths.map { |path| Tower.new(path) }
+    def areas
+      area_paths.map { |path| Area.new(path) }
     end
     
-    def tower_paths
-      Dir[File.expand_path('../../../towers/*', __FILE__)]
+    def area_paths
+      Dir[File.expand_path('../../../areas/*', __FILE__)]
     end
     
     
@@ -173,7 +173,7 @@ module RubySurvivor
     def final_report
       if profile.calculate_average_grade && !Config.practice_level
         report = ""
-        report << "Your average grade for this tower is: #{Level.grade_letter(profile.calculate_average_grade)}\n\n"
+        report << "Your average grade for this area is: #{Level.grade_letter(profile.calculate_average_grade)}\n\n"
         profile.current_epic_grades.keys.sort.each do |level|
           report << "  Level #{level}: #{Level.grade_letter(profile.current_epic_grades[level])}\n"
         end
@@ -189,7 +189,7 @@ module RubySurvivor
       if profile == :new
         profile = new_profile
         if profiles.any? { |p| p.player_path == profile.player_path }
-          if UI.ask("Are you sure you want to replace your existing profile for this tower?")
+          if UI.ask("Are you sure you want to replace your existing profile for this area?")
             UI.puts "Replacing existing profile."
             profile
           else
