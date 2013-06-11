@@ -3,7 +3,7 @@ Given /^a directory at "([^\"]*)"$/ do |path|
 end
 
 Given /^no directory at "([^\"]*)"$/ do |path|
-  Dir.rmdir(path) if File.exist? path
+  Dir.rmdir(path)
 end
 
 When /^I copy fixture "([^\"]*)" to "([^\"]*)"$/ do |from, to|

@@ -1,12 +1,12 @@
 require 'cucumber'
 require 'rspec'
 
-require File.dirname(__FILE__) + '/../../lib/ruby_warrior'
+require File.dirname(__FILE__) + '/../../lib/ruby_survivor'
 
 Before do
-  RubyWarrior::Config.reset
+  RubySurvivor::Config.reset
 end
 
 After do
-  FileUtils.rm_rf "towers/short"
+  FileUtils.rm_rf "areas/short"
 end

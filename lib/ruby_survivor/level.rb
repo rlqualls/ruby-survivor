@@ -67,7 +67,7 @@ module RubySurvivor
       UI.puts "Time Bonus: #{time_bonus}"
       score += @time_bonus
       
-      if floor.other_units.empty?
+      if floor.other_entities.empty?
         UI.puts "Clear Bonus: #{clear_bonus}"
         score += clear_bonus
       end
@@ -107,7 +107,7 @@ module RubySurvivor
     end
     
     def failed?
-      !@floor.units.include?(survivor)
+      !@floor.entities.include?(survivor)
     end
     
     def exists?

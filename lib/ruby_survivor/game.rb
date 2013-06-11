@@ -7,9 +7,6 @@ module RubySurvivor
       if File.exist?(Config.path_prefix + '/.profile')
         @profile = Profile.load(Config.path_prefix + '/.profile')
       else
-        if File.exist?(Config.path_prefix + '/ruby-survivor')
-          FileUtils.mv(Config.path_prefix + '/ruby-survivor', Config.path_prefix + '/rubysurvivor')
-        end
         make_game_directory unless File.exist?(Config.path_prefix + '/rubysurvivor')
       end
       
@@ -25,7 +22,7 @@ module RubySurvivor
     end
     
     def make_game_directory
-      if UI.ask("No rubywarrior directory found, would you like to create one?")
+      if UI.ask("No rubysurvivor directory found, would you like to create one?")
         Dir.mkdir(Config.path_prefix + '/rubysurvivor')
       else
         UI.puts "Unable to continue without directory."
@@ -58,7 +55,7 @@ module RubySurvivor
       else
         if current_level.number.zero?
           prepare_next_level
-          UI.puts "First level has been generated. See the rubywarrior/#{profile.directory_name}/README for instructions."
+          UI.puts "First level has been generated. See the rubysurvivor/#{profile.directory_name}/README for instructions."
         else
           play_current_level
         end

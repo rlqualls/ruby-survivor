@@ -7,7 +7,7 @@ module RubySurvivor
       
       def perform(direction = :forward)
         verify_direction(direction)
-        receiver = unit(direction)
+      receiver = target(direction)
         if receiver
           @unit.say "attacks #{direction} and hits #{receiver}"
           if direction == :backward

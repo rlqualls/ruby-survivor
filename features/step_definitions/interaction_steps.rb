@@ -1,34 +1,34 @@
-Given /^a profile named "([^\"]*)" on "([^\"]*)"$/ do |name, tower|
-  step 'I run rubywarrior'
+Given /^a profile named "([^\"]*)" on "([^\"]*)"$/ do |name, area|
+  step 'I run rubysurvivor'
   step 'I answer "y" to "create one?"'
-  step 'I choose "' + tower + '" for "tower"'
+  step 'I choose "' + area + '" for "area"'
   step 'I answer "' + name + '" to "name"'
   step 'I should see "generated"'
 end
 
 Given /^no profile at "([^\"]*)"$/ do |path|
-  RubyWarrior::Config.path_prefix = path
-  FileUtils.rm_rf("#{path}/rubywarrior")
+  RubySurvivor::Config.path_prefix = path
+  FileUtils.rm_rf("#{path}/rubysurvivor")
 end
 
 Given /^current directory is "([^\"]*)"$/ do |path|
-  RubyWarrior::Config.path_prefix = path
+  RubySurvivor::Config.path_prefix = path
 end
 
-When /^I run rubywarrior$/ do
+When /^I run rubysurvivor$/ do
   @io = MockIO.new
   @io.start do |io|
-    RubyWarrior::Config.out_stream = io
-    RubyWarrior::Config.in_stream = io
-    RubyWarrior::Game.new.start
+    RubySurvivor::Config.out_stream = io
+    RubySurvivor::Config.in_stream = io
+    RubySurvivor::Game.new.start
   end
 end
 
-When /^I run rubywarrior with options "([^\"]*)"$/ do |options|
-  RubyWarrior::Config.reset
+When /^I run rubysurvivor with options "([^\"]*)"$/ do |options|
+  RubySurvivor::Config.reset
   @io = MockIO.new
   @io.start do |io|
-    RubyWarrior::Runner.new(options.split, io, io).run
+    RubySurvivor::Runner.new(options.split, io, io).run
   end
 end
 

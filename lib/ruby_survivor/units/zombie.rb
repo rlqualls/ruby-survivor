@@ -14,7 +14,7 @@ module RubySurvivor
         end
 
         # walk towards the player if not standing next to it
-        survivor_space = turn.listen.map { |space| space.survivor? }.first
+        survivor_space = turn.listen.select { |space| space.survivor? }.first
         turn.walk!(turn.direction_of(survivor_space))
       end
       
