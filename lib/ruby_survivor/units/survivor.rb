@@ -1,7 +1,7 @@
 module RubySurvivor
   module Units
     class Survivor < Base
-      attr_writer :name
+      attr_writer :name, :stamina
       attr_reader :score
       
       def initialize
@@ -25,9 +25,26 @@ module RubySurvivor
       def attack_power
         5
       end
+
+      def stamina
+        @stamina ||= max_stamina 
+      end
+
+      def lose_stamina(amount)
+        if stamina
+          self.stamina -= amount
+          if stamina <= 0
+            self.stamina = 0
+          end
+        end
+      end
       
       def shoot_power
         3
+      end
+
+      def max_stamina
+        max_health 
       end
       
       def max_health
