@@ -1,10 +1,10 @@
 #  -----------
-# |>Ca  @ S wC|
+# |>Cp  @ Z wC|
 #  -----------
 
 description "Time to hone your skills and apply all of the abilities that you have learned."
 tip "Watch your back."
-clue "Don't just keep shooting the bow while you are being attacked from behind."
+clue "Don't just keep shooting while you are being attacked from behind."
 
 time_bonus 40
 ace_score 100

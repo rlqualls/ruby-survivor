@@ -12,7 +12,7 @@ size 9, 1
 exit 8, 0
 
 survivor 0, 0, :east do |u|
-  u.add_abilities :health, :rest!, :heal!
+  u.add_abilities :health, :heal!
 end
 
 unit :zombie, 2, 0, :west

@@ -1,5 +1,5 @@
 #  ------
-# |>a S @|
+# |>p Z @|
 #  ------
 
 description "You feel a wall right in front of you and an opening behind you."
@@ -11,7 +11,7 @@ size 6, 1
 exit 0, 0
 
 survivor 5, 0, :east do |u|
-  u.add_abilities :pivot!
+  u.add_abilities :walk!, :pivot!, :attack!, :run!, :swing!, :health, :look, :feel
 end
 
 unit :spitter, 1, 0, :east

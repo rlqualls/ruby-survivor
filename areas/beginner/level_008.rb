@@ -12,7 +12,6 @@ size 6, 1
 exit 5, 0
 
 survivor 0, 0, :east do |u|
-  u.add_abilities :look
   u.add_abilities :shoot!
 end
 

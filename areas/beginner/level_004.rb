@@ -2,7 +2,7 @@
 # |@    p>|
 #  -------
 
-description "You can hear a high-pitched hiss in the distance."
+description "The hospital is just ahead, where you might be able to score a medpack. In the parking lot, you can hear a high-pitched hiss in the distance."
 
 tip "Spitters can deal a lot of damage.  Instead of using survivor.walk!, use survivor.run! to get to them before they can take you down."
 
